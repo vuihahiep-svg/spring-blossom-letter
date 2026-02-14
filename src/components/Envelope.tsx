@@ -8,23 +8,25 @@ const Envelope = ({ onOpen }: EnvelopeProps) => {
   return (
     <motion.div
       className="cursor-pointer select-none"
-      animate={{ y: [0, -12, 0] }}
-      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1, y: [0, -10, 0] }}
+      transition={{
+        opacity: { duration: 0.8 },
+        scale: { duration: 0.8 },
+        y: { duration: 3, repeat: Infinity, ease: "easeInOut" },
+      }}
       onClick={onOpen}
-      whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.97 }}
+      whileHover={{ scale: 1.05, rotate: 1 }}
+      whileTap={{ scale: 0.95 }}
     >
-      {/* Envelope SVG */}
-      <div className="relative w-[320px] h-[220px] sm:w-[400px] sm:h-[270px]">
+      <div className="relative w-[280px] h-[190px] sm:w-[360px] sm:h-[240px]">
         {/* Envelope body */}
         <div className="envelope-body absolute inset-0 rounded-lg border border-gold-light/30" />
 
-        {/* Envelope flap (triangle) */}
+        {/* Envelope flap */}
         <div
           className="envelope-flap absolute top-0 left-0 right-0 h-[45%] rounded-t-lg"
-          style={{
-            clipPath: "polygon(0 0, 100% 0, 50% 100%)",
-          }}
+          style={{ clipPath: "polygon(0 0, 100% 0, 50% 100%)" }}
         />
 
         {/* Gold border trim */}
@@ -32,23 +34,23 @@ const Envelope = ({ onOpen }: EnvelopeProps) => {
 
         {/* Wax seal */}
         <div className="envelope-seal absolute left-1/2 top-[42%] -translate-x-1/2 w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center z-10">
-          <span className="font-serif-display text-primary-foreground text-lg sm:text-xl font-bold tracking-wider">
+          <span className="text-primary-foreground text-lg sm:text-xl font-bold tracking-wider">
             春
           </span>
         </div>
 
-        {/* Decorative text */}
-        <div className="absolute bottom-6 left-0 right-0 text-center">
-          <p className="font-serif-display text-deep-red/70 text-sm tracking-[0.2em]">
-            Thảo Hiền Tiểu Thư
+        {/* 4 chữ chúc phúc đầu xuân */}
+        <div className="absolute bottom-5 left-0 right-0 text-center">
+          <p className="text-deep-red/80 text-sm sm:text-base font-semibold tracking-[0.25em]">
+            Tân Xuân Đại Cát
           </p>
         </div>
 
         {/* Click hint */}
         <motion.p
-          className="absolute -bottom-10 left-0 right-0 text-center text-muted-foreground text-xs tracking-widest"
-          animate={{ opacity: [0.4, 0.8, 0.4] }}
-          transition={{ duration: 2, repeat: Infinity }}
+          className="absolute -bottom-9 left-0 right-0 text-center text-muted-foreground text-xs tracking-widest"
+          animate={{ opacity: [0.3, 0.7, 0.3] }}
+          transition={{ duration: 2.5, repeat: Infinity }}
         >
           nhấn để mở
         </motion.p>
