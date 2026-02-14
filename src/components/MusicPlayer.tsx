@@ -1,4 +1,4 @@
-import { useRef, useState, useCallback } from "react";
+import { useRef, useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Volume2, VolumeX } from "lucide-react";
 
@@ -7,12 +7,15 @@ const MusicPlayer = ({ play }: { play: boolean }) => {
   const [muted, setMuted] = useState(false);
   const [started, setStarted] = useState(false);
 
-  // Start playing when triggered
-  if (play && !started && audioRef.current) {
-    audioRef.current.volume = 0.4;
-    audioRef.current.play().catch(() => {});
-    setStarted(true);
-  }
+  // Start playing immediately without delay or fade-in
+  useEffect(() => {
+    if (play && !started && audioRef.current) {
+      const audio = audioRef.current;
+      audio.volume = 0.4;
+      audio.play().catch(() => {});
+      setStarted(true);
+    }
+  }, [play, started]);
 
   const toggleMute = useCallback(() => {
     if (audioRef.current) {
@@ -27,7 +30,7 @@ const MusicPlayer = ({ play }: { play: boolean }) => {
         ref={audioRef}
         loop
         preload="auto"
-        src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+        src="/nhac.mp3"
       />
       <AnimatePresence>
         {play && (

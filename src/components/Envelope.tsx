@@ -42,7 +42,7 @@ const Envelope = ({ onOpen }: EnvelopeProps) => {
         {/* 4 chữ chúc phúc đầu xuân */}
         <div className="absolute bottom-5 left-0 right-0 text-center">
           <p className="text-deep-red/80 text-sm sm:text-base font-semibold tracking-[0.25em]">
-            Tân Xuân Đại Cát
+            Thanh Phong Ý Thiệp
           </p>
         </div>
 

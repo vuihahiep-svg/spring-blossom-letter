@@ -37,6 +37,9 @@ Hạnh phúc bình an, vạn sự thông
 Thanh phong hữu ý, truyền tâm ngạn
 Hảo mộng lưu niên, khởi ý nồng.`,
   },
+  {
+    text: "Tiểu sinh hèn mọn có chuẩn bị chút sản vật \"tiêu điều\" quê nhà, lại khẽ nhặt một nhành Mai gửi cùng phong thư, như một tâm ý nhỏ thể hiện lòng thành của mình. Dẫu đường xa, quá trình ship sẽ tốn nhiều tuần, chỉ mong khi đến tay em, sắc hoa vẫn nồng.",
+  },
 ];
 
 const LetterContent = () => {
