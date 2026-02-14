@@ -3,6 +3,10 @@ import hoaMaiImg from "@/assets/hoa-mai.jpg";
 
 const paragraphs = [
   {
+    text: "Thảo Hiền Tiểu Thư,",
+    bold: true,
+  },
+  {
     text: "Khi viết bức thư này cũng đã là cận kề những ngày Tết. Lúc rời Hà Nội, vốn định cùng em trò chuyện một buổi, lắng nghe cao kiến.",
   },
   {
@@ -40,69 +44,57 @@ const LetterContent = () => {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.3,
+        staggerChildren: 0.12,
+        delayChildren: 0.2,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 30, filter: "blur(4px)" },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" as const },
+      filter: "blur(0px)",
+      transition: { duration: 0.7, ease: "easeOut" as const },
     },
   };
 
   return (
     <motion.div
-      className="letter-paper rounded-xl p-6 sm:p-10 md:p-14 max-w-3xl mx-auto my-8 relative"
+      className="letter-paper rounded-xl p-5 sm:p-8 md:p-12 max-w-2xl mx-auto my-4 sm:my-8 relative"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
       {/* Decorative corner ornaments */}
-      <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-gold/40 rounded-tl-sm" />
-      <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-gold/40 rounded-tr-sm" />
-      <div className="absolute bottom-4 left-4 w-8 h-8 border-b-2 border-l-2 border-gold/40 rounded-bl-sm" />
-      <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-gold/40 rounded-br-sm" />
-
-      {/* Title */}
-      <motion.h1
-        variants={itemVariants}
-        className="font-serif-display text-3xl sm:text-4xl md:text-5xl text-deep-red text-center mb-8 sm:mb-12 font-bold tracking-wide text-shadow-gold"
-      >
-        Thảo Hiền Tiểu Thư.
-      </motion.h1>
+      <div className="absolute top-3 left-3 w-6 h-6 sm:w-8 sm:h-8 border-t-2 border-l-2 border-gold/40 rounded-tl-sm" />
+      <div className="absolute top-3 right-3 w-6 h-6 sm:w-8 sm:h-8 border-t-2 border-r-2 border-gold/40 rounded-tr-sm" />
+      <div className="absolute bottom-3 left-3 w-6 h-6 sm:w-8 sm:h-8 border-b-2 border-l-2 border-gold/40 rounded-bl-sm" />
+      <div className="absolute bottom-3 right-3 w-6 h-6 sm:w-8 sm:h-8 border-b-2 border-r-2 border-gold/40 rounded-br-sm" />
 
       {/* Decorative divider */}
-      <motion.div variants={itemVariants} className="flex items-center justify-center gap-3 mb-8 sm:mb-10">
-        <div className="h-px w-16 bg-gold/50" />
-        <span className="text-gold text-lg">✿</span>
-        <div className="h-px w-16 bg-gold/50" />
+      <motion.div variants={itemVariants} className="flex items-center justify-center gap-3 mb-6 sm:mb-8">
+        <div className="h-px w-12 sm:w-16 bg-gold/50" />
+        <span className="text-gold text-base sm:text-lg">✿</span>
+        <div className="h-px w-12 sm:w-16 bg-gold/50" />
       </motion.div>
 
       {/* Letter body */}
-      <div className="space-y-5 sm:space-y-6">
+      <div className="space-y-4 sm:space-y-5">
         {paragraphs.map((para, index) => {
           if ('type' in para && para.type === "image") {
             return (
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="flex justify-center my-6 sm:my-8"
+                className="flex justify-center my-4 sm:my-6"
               >
-                <div className="relative">
-                  <img
-                    src={hoaMaiImg}
-                    alt="Hoa Mai - Vietnamese Ochna flower"
-                    className="w-48 sm:w-64 md:w-72 rounded-lg shadow-lg border-2 border-gold/20"
-                  />
-                  <p className="text-center text-muted-foreground text-xs mt-2 italic font-body-serif">
-                    Hoa Mai vàng — biểu tượng của mùa Xuân phương Nam
-                  </p>
-                </div>
+                <img
+                  src={hoaMaiImg}
+                  alt="Hoa Mai"
+                  className="w-40 sm:w-56 md:w-64 rounded-lg shadow-lg border-2 border-gold/20"
+                />
               </motion.div>
             );
           }
@@ -112,12 +104,12 @@ const LetterContent = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="my-8 sm:my-10 py-6 px-4 sm:px-8 border-y border-gold/30 text-center"
+                className="my-6 sm:my-8 py-5 px-3 sm:px-6 border-y border-gold/30 text-center"
               >
                 {para.text?.split("\n").map((line, i) => (
                   <p
                     key={i}
-                    className="font-serif-display text-deep-red text-lg sm:text-xl md:text-2xl leading-relaxed italic"
+                    className="text-deep-red text-base sm:text-lg md:text-xl leading-relaxed italic font-medium"
                   >
                     {line}
                   </p>
@@ -130,7 +122,9 @@ const LetterContent = () => {
             <motion.p
               key={index}
               variants={itemVariants}
-              className="font-body-serif text-foreground text-base sm:text-lg md:text-xl leading-relaxed sm:leading-loose tracking-wide indent-8"
+              className={`text-foreground text-sm sm:text-base md:text-lg leading-relaxed sm:leading-loose tracking-wide ${
+                'bold' in para && para.bold ? 'font-semibold text-deep-red' : 'indent-6 sm:indent-8'
+              }`}
             >
               {para.text}
             </motion.p>
@@ -141,14 +135,17 @@ const LetterContent = () => {
       {/* Sign off */}
       <motion.div
         variants={itemVariants}
-        className="mt-10 sm:mt-14 text-right"
+        className="mt-8 sm:mt-12 text-right"
       >
         <div className="flex items-center justify-end gap-3 mb-3">
-          <div className="h-px w-20 bg-gold/40" />
+          <div className="h-px w-16 sm:w-20 bg-gold/40" />
           <span className="text-gold text-sm">✿</span>
         </div>
-        <p className="font-serif-display text-deep-red text-base sm:text-lg italic">
-          Tiểu sinh kính bút.
+        <p className="text-deep-red text-sm sm:text-base italic">
+          Trân trọng,
+        </p>
+        <p className="text-deep-red text-base sm:text-lg font-semibold mt-1">
+          Hoàng Hiệp.
         </p>
       </motion.div>
     </motion.div>

@@ -44,10 +44,10 @@ const Index = () => {
           ) : (
             <motion.div
               key="letter"
-              initial={{ opacity: 0, y: 60, scale: 0.9 }}
+              initial={{ opacity: 0, y: 80, scale: 0.85 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-              className="min-h-screen py-8 px-4 sm:px-6 letter-scroll overflow-y-auto"
+              transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.2 }}
+              className="min-h-screen py-4 sm:py-8 px-3 sm:px-6 letter-scroll overflow-y-auto"
             >
               <LetterContent />
             </motion.div>
